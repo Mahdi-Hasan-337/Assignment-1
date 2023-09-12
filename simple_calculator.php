@@ -13,6 +13,7 @@
 </head>
 <body>
     <?php include './nav.php'; ?>   
+
     <div class="container-fluid">
         <div class="row vh-100 justify-content-center align-items-center p-5">
             <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3" style="background: rgba(0, 242, 255, 0.354); ">

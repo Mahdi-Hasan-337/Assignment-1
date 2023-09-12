@@ -34,13 +34,6 @@
             <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3" style="background: rgba(0, 242, 255, 0.354); ">
                 <form action="#" method="POST">
                     <h3 class="text-center mb-4">Weather Report</h3>
-                    <!-- <input class="input-field p-2 mb-3" type="number" name="num" step="any" placeholder="Enter the mark of test 1">
-                    <div>
-                        <select class="p-2" id="scale" name="scale" style="width: 100%; border: none; font-size: 1.0rem;">
-                            <option value="cel" class="text-center">Celsius</option>
-                            <option value="fah" class="text-center">Fahrenheit</option>
-                        </select>
-                    </div><br> -->
                     <div class="d-flex justify-content-between">
                         <input class="p-2" type="number" name="num" step="any" placeholder="Enter the temperature" style="border: none; width: 100%; margin-right: 2px;">
                         <select class="p-2" id="op1" name="op1" style="border: none;">

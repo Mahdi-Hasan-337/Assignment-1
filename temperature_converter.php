@@ -25,12 +25,20 @@
                             <option value="fah" class="text-center">Fahrenheit</option>
                         </select>
                     </div><br>
-                    <div>
-                        <select class="p-2" id="op2" name="op2" style="width: 100%; border: none; font-size: 1.0rem;">
+                    <div class="d-flex justify-content-between">
+                        <input class="p-2" type="number" name="num" step="any" placeholder="Convert to" style="border: none; width: 100%; margin-right: 2px;" readonly>
+                        <select class="p-2" id="op2" name="op2" style="border: none;">
                             <option value="cel" class="text-center">Celsius</option>
                             <option value="fah" class="text-center">Fahrenheit</option>
                         </select>
-                    </div> <br>
+                    </div><br>
+                    <!-- <div>
+                        <input class="p-2" type="number" name="num" step="any" placeholder="Select where you convert" style="border: none; margin-right: 2px;">
+                        <select class="p-2" id="op2" name="op2" style="border: none;">
+                            <option value="cel" class="text-center">Celsius</option>
+                            <option value="fah" class="text-center">Fahrenheit</option>
+                        </select>
+                    </div> <br> -->
                     <div>
                         <button class="p-2 bg-info" type="submit" style="width: 100%; border: none; font-size: 1.1rem; font-weight:600; letter-spacing: 0.1rem;">Convert</button>
                     </div>
