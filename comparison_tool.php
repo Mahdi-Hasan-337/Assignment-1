@@ -44,12 +44,14 @@
                 <div id="calcrslt">
                     <?php
                         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                            $num1 = (float)$_POST['num1'];
-                            $num2 = (float)$_POST['num2'];
+                            $num1 = isset($_POST["num1"]) && $_POST['num1'] !== "" ? (float)$_POST["num1"] : null;
+                            $num2 = isset($_POST["num2"]) && $_POST['num2'] !== "" ? (float)$_POST["num2"] : null;
                             
-                            $rslt = ($num1 > $num2) ? 
+                            $rslt = ($num1 == null && $num2 == null) ? 
+                                    "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Empty Field...!!!</p>": 
+                                    (($num1 > $num2) ? 
                                     "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>$num1 is the largest</p>": 
-                                    "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>$num2 is the largest</p>";
+                                    "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>$num2 is the largest</p>");
                             echo $rslt;
                         }
                     ?>

@@ -42,12 +42,19 @@
 
                 <div id="calcrslt">
                     <?php
-                        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                            $num = (float)$_POST['num'];
-                            $rslt = ($num % 2 == 0) ? 
-                            "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is even</p>" :
-                            "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is odd</p>";
-                            echo $rslt;
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            if (isset($_POST['num']) && $_POST['num'] !== "") { /// null checking
+
+                                $num = (float)$_POST['num'];
+
+                                if ($num % 2 == 0) {
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is even</p>";
+                                } else {
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is odd</p>";
+                                }
+                            } else {
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Please enter a valid number</p>";
+                            }
                         }
                     ?>
                 </div>

@@ -41,34 +41,28 @@
                 <div id="calcrslt">
                     <?php
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $num1 = $_POST["num1"];
-                            $num2 = $_POST["num2"];
-                            $operation = $_POST["operation"];
+                            $num1 = isset($_POST["num1"]) && $_POST['num1'] !== "" ? (float)$_POST["num1"] : null;
+                            $num2 = isset($_POST["num2"]) && $_POST['num2'] !== "" ? (float)$_POST["num2"] : null;
 
-                            $num1 = (float)$num1;
-                            $num2 = (float)$num2;
+                            if ($num1 === null || $num2 === null) {
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Input fields maybe emoty</p>";
+                            } else {
+                                $operation = $_POST["operation"];
 
-                            switch ($operation) {
-                                case "addition":
+                                if ($operation == "addition") {
                                     $result = $num1 + $num2;
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Result: $result</p>";
-                                    break;
-                                case "substract":
+                                } elseif ($operation == "subtract") {
                                     $result = $num1 - $num2;
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Result: $result</p>";
-                                    break;
-                                case "multiplication":
+                                } elseif ($operation == "multiplication") {
                                     $result = $num1 * $num2;
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Result: $result</p>";
-                                    break;
-                                case "division":
+                                } elseif ($operation == "division") {
                                     if ($num2 != 0) {
                                         $result = $num1 / $num2;
-                                        echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Result: $result</p>";
                                     } else {
-                                        echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Divide by zero is not possible</p>";
+                                        echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Undefined...!!! Maybe you are trying to divide by zero.</p>";
                                     }
-                                    break;
+                                }
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Result: $result</p>";
                             }
                         }
                     ?>

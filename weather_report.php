@@ -48,35 +48,26 @@
 
                 <div id="calcrslt">
                     <?php
-                        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                            $num = (float)$_POST['num'];
-                            $scale = $_POST['scale'];
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            $num = isset($_POST["num"]) && $_POST['num'] !== "" ? (float)$_POST["num"] : null;
 
-                            if($scale == 'cel'){ /// when celcious scale
+                            if ($num === null) {
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Input fields maybe empty</p>";
+                            } else {
+                                $scale = $_POST['op1'];
 
-                                if($num <= 0) {
+                                if ($scale == 'fah') {
+                                    $num = ($num - 32) * 5 / 9; // Convert Fahrenheit to Celsius
+                                } 
+
+                                if ($num <= 0) {
                                     echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's freezing</p>";
-                                } elseif($num > 0 && $num <= 10) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cool</p>";                            
-                                } elseif($num>10  && $num <= 20) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cold</p>";                            
-                                } elseif($num>20  && $num <= 30) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's warm</p>";                            
-                                } elseif($num > 30) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's hot</p>";
-                                }
-                            } elseif($scale == 'fah'){ /// when fahrenheit scale
-
-                                $num = ($num - 32) * 5/9; /// convert fahrenheit to celcious
-                                
-                                if($num <= 0) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's freezing</p>";
-                                } elseif($num > 0 && $num <= 10) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cool</p>";                            
-                                } elseif($num>10  && $num <= 20) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cold</p>";                            
-                                } elseif($num>20  && $num <= 30) {
-                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's warm</p>";                            
+                                } elseif ($num > 0 && $num <= 10) {
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cool</p>";
+                                } elseif ($num > 10 && $num <= 20) {
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's cold</p>";
+                                } elseif ($num > 20 && $num <= 30) {
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's warm</p>";
                                 } else {
                                     echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>It's hot</p>";
                                 }
