@@ -25,13 +25,20 @@
             font-weight:600; 
             letter-spacing: 0.1rem;
         }
+        .reset-btn{
+            width: 100%; 
+            border: none; 
+            font-size: 1.1rem; 
+            font-weight:600; 
+            letter-spacing: 0.1rem;
+        }
     </style>
 </head>
 <body>    
     <?php include './nav.php'; ?>   
     <div class="container-fluid">
         <div class="row vh-100 justify-content-center align-items-center p-5">
-            <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3" style="background: rgba(0, 242, 255, 0.354); ">
+            <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3 shadow-lg" style="background: rgba(0, 242, 255, 0.354); ">
                 <form action="#" method="POST">
                     <h3 class="text-center mb-4">Even or Odd Checker</h3>
                     <input class="input-field p-2 mb-3" type="number" name="num" placeholder="Enter the mark of test 1">
@@ -43,23 +50,22 @@
                 <div id="calcrslt">
                     <?php
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                            if (isset($_POST['num']) && $_POST['num'] !== "") { /// null checking
+                            $num = isset($_POST["num"]) && $_POST['num'] !== "" ? (float)$_POST["num1"] : null;
 
-                                $num = (float)$_POST['num'];
-
+                            if ($num === null) {
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Input fields maybe emoty</p>";
+                            } else {
                                 if ($num % 2 == 0) {
                                     echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is even</p>";
                                 } else {
                                     echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>The number is odd</p>";
                                 }
-                            } else {
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Please enter a valid number</p>";
                             }
                         }
                     ?>
                 </div>
                 <div>
-                    <button class="p-2 bg-secondary mt-2" type="button" onclick="resetResult()" style="width: 100%; border: none; font-size: 1.1rem; font-weight:600; letter-spacing: 0.1rem;">Reset</button>
+                    <button class="reset-btn p-2 bg-secondary mt-2" type="button" onclick="resetResult()">Reset</button>
                 </div>
             </div>
         </div>

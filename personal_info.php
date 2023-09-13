@@ -22,7 +22,7 @@
     <?php include './nav.php'; ?>   
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center p-5">
-            <div class="col-lg-10 col-md-12 p-5 mb-3 mt-5" style="background: rgba(0, 242, 255, 0.354); border: 2px solid black">
+            <div class="shadow-lg col-lg-9 col-md-12 p-5 mb-3 mt-5 shadow-lg" style="background: rgba(0, 242, 255, 0.354); border: 2px solid black;">
                 <h2 class="text-center mb-4 bg-light p-2">Personal Information</h2>
                 <div class="border-bottom border-dark myname d-flex justify-content-around">
                     <p class="col-3">Name</p>

@@ -10,13 +10,20 @@
         ::-webkit-scrollbar{
             display: none;
         }
+        .reset-btn{
+            width: 100%; 
+            border: none; 
+            font-size: 1.1rem; 
+            font-weight:600; 
+            letter-spacing: 0.1rem;
+        }
     </style>
 </head>
 <body>
     <?php include './nav.php'; ?>   
     <div class="container-fluid">
         <div class="row vh-100 justify-content-center align-items-center p-5">
-            <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3" style="background: rgba(0, 242, 255, 0.354); ">
+            <div class="col-lg-4 col-md-12 col-md-12 p-5 mb-3 shadow-lg" style="background: rgba(0, 242, 255, 0.354); ">
                 <form action="#" method="POST">
                     <h3 class="text-center mb-4">Temperature Converter</h3>
                     <div class="d-flex justify-content-between">
@@ -65,7 +72,7 @@
                     ?>
                 </div>
                 <div>
-                    <button class="p-2 bg-secondary mt-2" type="button" onclick="resetResult()" style="width: 100%; border: none; font-size: 1.1rem; font-weight:600; letter-spacing: 0.1rem;">Reset</button>
+                    <button class="reset-btn p-2 bg-secondary mt-2" type="button" onclick="resetResult()">Reset</button>
                 </div>
             </div>
         </div>
