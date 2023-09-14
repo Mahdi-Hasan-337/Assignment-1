@@ -34,9 +34,7 @@
                             <option value="cel" class="text-center">Celsius</option>
                             <option value="fah" class="text-center">Fahrenheit</option>
                         </select>
-                        <!-- <p class="p-1"> -->
                             <i class="fa-solid fa-left-right mt-2" style="font-size: 1.5rem;"></i>
-                        <!-- </p> -->
                         <select class="p-2" id="op2" name="op2" style="border: none;">
                             <option value="cel" class="text-center">Celsius</option>
                             <option value="fah" class="text-center">Fahrenheit</option>

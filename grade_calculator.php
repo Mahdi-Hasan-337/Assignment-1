@@ -43,59 +43,34 @@
                 </form>
 
                 <div id="calcrslt">
-                    <!-- <?php
-                        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                            $sub1 = (float)$_POST["sub1"];
-                            $sub2 = (float)$_POST["sub2"];
-                            $sub3 = (float)$_POST["sub3"];
+                    <?php
+                        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                            $sub1 = isset($_POST["sub1"]) && $_POST['sub1'] !== "" ? (float)$_POST["sub1"] : null; /// null checking
+                            $sub2 = isset($_POST["sub2"]) && $_POST['sub2'] !== "" ? (float)$_POST["sub2"] : null;
+                            $sub3 = isset($_POST["sub3"]) && $_POST['sub3'] !== "" ? (float)$_POST["sub3"] : null;
 
-                            $rslt = ($sub1 + $sub2 + $sub3)/3;
-
-                            if ($sub1 > 100 || $sub2 > 100 || $sub3 > 100 || $sub1 < 0 || $sub2 < 0 || $sub3 < 0 || $sub1 == " " || $sub2 == " " || $sub3 == " ") {
-                                echo "<p>Something went wrong..<br>Please, try again...!!!;</p>";
-                            } elseif($rslt >= 70 && $rslt <= 100){ /// 70 -100 => A
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>A</p>";
-                            } elseif($rslt >= 55 && $rslt <= 69){  /// 55 - 69 => B
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>B</p>";
-                            } elseif($rslt >= 45 && $rslt <= 54){  /// 45 - 54 => C
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>C</p>";
-                            } elseif($rslt >= 40 && $rslt <= 44){  /// 40 - 44 => D 
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>D</p>";
-                            } elseif($rslt >= 0 && $rslt <= 39){   /// 00 - 39 => F
-                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>F</p>";
+                            // Check if any of the input fields are empty or not valid numbers
+                            if ($sub1 === null || $sub2 === null || $sub3 === null ||
+                                $sub1 > 100 || $sub2 > 100 || $sub3 > 100 ||
+                                $sub1 < 0 || $sub2 < 0 || $sub3 < 0) {
+                                echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Something went wrong...<br>Please, try again...!!!;</p>";
+                            } else {
+                                $rslt = ($sub1 + $sub2 + $sub3) / 3;
+                                
+                                if ($rslt >= 70 && $rslt <= 100) { /// 70 -100 => A
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Average : $rslt <br> Grade : A</p>";
+                                } elseif ($rslt >= 55 && $rslt <= 69) {  /// 55 - 69 => B
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Average : $rslt <br> Grade : B</p>";
+                                } elseif ($rslt >= 45 && $rslt <= 54) {  /// 45 - 54 => C
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Average : $rslt <br> Grade : C</p>";
+                                } elseif ($rslt >= 40 && $rslt <= 44) {  /// 40 - 44 => D 
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Average : $rslt <br> Grade : D</p>";
+                                } elseif ($rslt >= 0 && $rslt <= 39) {   /// 00 - 39 => F
+                                    echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Average : $rslt <br> Grade : F</p>";
+                                }
                             }
                         }
-                    ?> -->
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $sub1 = isset($_POST["sub1"]) && $_POST['sub1'] !== "" ? (float)$_POST["sub1"] : null; /// null checking
-    $sub2 = isset($_POST["sub2"]) && $_POST['sub2'] !== "" ? (float)$_POST["sub2"] : null;
-    $sub3 = isset($_POST["sub3"]) && $_POST['sub3'] !== "" ? (float)$_POST["sub3"] : null;
-
-    // Check if any of the input fields are empty or not valid numbers
-    if ($sub1 === null || $sub2 === null || $sub3 === null ||
-        $sub1 > 100 || $sub2 > 100 || $sub3 > 100 ||
-        $sub1 < 0 || $sub2 < 0 || $sub3 < 0) {
-        echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>Something went wrong...<br>Please, try again...!!!;</p>";
-    } else {
-        $rslt = ($sub1 + $sub2 + $sub3) / 3;
-        
-        if ($rslt >= 70 && $rslt <= 100) { /// 70 -100 => A
-            echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>A</p>";
-        } elseif ($rslt >= 55 && $rslt <= 69) {  /// 55 - 69 => B
-            echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>B</p>";
-        } elseif ($rslt >= 45 && $rslt <= 54) {  /// 45 - 54 => C
-            echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>C</p>";
-        } elseif ($rslt >= 40 && $rslt <= 44) {  /// 40 - 44 => D 
-            echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>D</p>";
-        } elseif ($rslt >= 0 && $rslt <= 39) {   /// 00 - 39 => F
-            echo "<p class='text-center bg-light p-2 mt-3' style='font-size: 1.1rem;'>F</p>";
-        }
-    }
-}
-?>
-
+                    ?>
                 </div>
                 <div>
                     <button class="reset-btn p-2 bg-secondary mt-2" type="button" onclick="resetResult()">Reset</button>
